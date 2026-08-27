@@ -1,2 +1,164 @@
-dpf ndd .
-drow.io 
+*** FOR INTERNAL USE ONLY ***
+# DPF Network Detail Document (NDD)
+
+## Overview
+
+This repository contains the **Network Detail Document (NDD)** for **DPF (DPU Platform Framework)**.
+
+The NDD provides a visual representation of the DPF network architecture and the relationships between the different components involved in the DPF networking and provisioning flows.
+
+The main purpose of this document is to provide a common reference for developers, reviewers, and anyone working on the DPF networking architecture.
+
+The diagram is maintained as an editable **draw.io / diagrams.net** file so that the architecture can be updated as the DPF implementation evolves.
+
+## Repository Contents
+
+The main diagram is:
+
+```text
+ndd/
+└── NDD.drawio
+```
+
+`NDD.drawio` is the source document for the Network Detail Document.
+
+The file should be considered the **source of truth for the diagram**. If an image or other exported representation is generated from the diagram, it should not replace the `.drawio` source file.
+
+---
+
+# Viewing the NDD
+
+The diagram can be viewed using **diagrams.net (draw.io)**.
+
+Open:
+
+https://app.diagrams.net/
+
+Then:
+
+1. Select **Open Existing Diagram**.
+2. Select **Device**.
+3. Download `ndd/NDD.drawio` from this repository.
+4. Open the downloaded file.
+
+The `.drawio` file is an editable XML-based diagram format and can be opened directly by diagrams.net.
+
+---
+
+# Editing the NDD
+
+There are several ways to edit the diagram.
+
+## Option 1 - Edit locally
+
+This is the recommended method for developers who already have the repository cloned.
+
+Clone the repository:
+
+```bash
+git clone git@github.com:SharonBX/dpf-ndd.git
+cd dpf-ndd
+```
+
+Open the diagram using diagrams.net:
+
+```text
+ndd/NDD.drawio
+```
+
+You can either use the diagrams.net desktop application or open the file through:
+
+https://app.diagrams.net/
+
+When using the web application, choose **Device** and open the local `NDD.drawio` file.
+
+After making changes, save the diagram back to:
+
+```text
+ndd/NDD.drawio
+```
+
+Then check the Git changes:
+
+```bash
+git status
+```
+
+You should see:
+
+```text
+modified:   ndd/NDD.drawio
+```
+
+Commit the change:
+
+```bash
+git add ndd/NDD.drawio
+git commit -m "Update DPF network detail document"
+```
+
+Push it to GitHub:
+
+```bash
+git push
+```
+
+---
+
+
+When making a significant change to the NDD, use a separate Git branch.
+
+For example:
+
+```bash
+git switch -c update-ndd-network-flow
+```
+
+Edit:
+
+```text
+ndd/NDD.drawio
+```
+
+Review the change:
+
+```bash
+git diff --stat
+git status
+```
+
+Commit:
+
+```bash
+git add ndd/NDD.drawio
+git commit -m "Update DPF network detail document"
+```
+
+Push the branch:
+
+```bash
+git push -u origin update-ndd-network-flow
+```
+
+Then create a Pull Request for review.
+
+## Important
+
+Avoid editing `main` directly when the diagram change is significant.
+
+Using a branch allows the diagram changes to be reviewed before they become part of the main NDD.
+
+---
+
+# Purpose of the NDD
+
+The Network Detail Document is intended to answer questions such as:
+
+* How are the DPF components connected?
+* Which component is responsible for a particular network connection?
+* How does networking between the host, DPU and external network work?
+* Which interfaces and networks are involved?
+* Which connections are control-plane and which are data-plane?
+* How does the network configuration relate to DPF provisioning?
+* What are the dependencies between the different DPF networking components?
+
